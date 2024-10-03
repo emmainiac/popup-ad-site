@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Pop-up Example</title>
+    <style>
+        /* Basic styling for the body, pop-up, and its container */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #popup {
+            display: block; /* Always visible at the start */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #333;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #popup h2 {
+            margin: 0 0 10px;
+        }
+
+        #popup p {
+            font-size: 16px;
+        }
+
+        #closePopup {
+            background-color: #ff5e5e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pop-up content with a close button -->
+    <div id="popup">
+        <h2>This is a Pop-up Ad</h2>
+        <p>And I made you read it!</p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <script>
+        // Get the popup and the close button
+        var popup = document.getElementById('popup');
+        var closeButton = document.getElementById('closePopup');
+
+        // Function to hide the popup
+        function hidePopup() {
+            popup.style.display = 'none';
+
+            // Wait 300 milliseconds and then show the popup again
+            setTimeout(function() {
+                popup.style.display = 'block';
+            }, 300);  // Short delay before the pop-up comes back
+        }
+
+        // Add an event listener to the close button to trigger the hidePopup function
+        closeButton.addEventListener('click', function() {
+            hidePopup();  // Attempt to hide the popup (but it will come back)
+        });
+
+        // Ensure the popup is visible on page load
+        window.onload = function() {
+            popup.style.display = 'block';
+        };
+    </script>
+</body>
+</html>
